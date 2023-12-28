@@ -13,7 +13,11 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, UpdateProductPage.id ,arguments: product);
+        Navigator.pushNamed(
+          context,
+          UpdateProductPage.id,
+          arguments: product,
+        );
       },
       child: Stack(
         clipBehavior: Clip.none,
@@ -24,7 +28,7 @@ class CustomCard extends StatelessWidget {
                 blurRadius: 50,
                 color: Colors.grey.withOpacity(.1),
                 spreadRadius: 20,
-                offset: Offset(10, 10),
+                offset: const Offset(10, 10),
               ),
             ]),
             child: Card(
@@ -33,20 +37,19 @@ class CustomCard extends StatelessWidget {
               ),
               elevation: 10,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       product.title.substring(0, 6),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 3,
                     ),
                     Row(
@@ -54,11 +57,11 @@ class CustomCard extends StatelessWidget {
                       children: [
                         Text(
                           r'$' '${product.price.toString()}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.favorite,
                           color: Colors.red,
                         ),

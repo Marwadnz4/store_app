@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:store/cubit/product_state.dart';
 import 'package:store/models/product_model.dart';
 import 'package:store/services/get_all_product_service.dart';
@@ -14,10 +11,8 @@ class ProductCubit extends Cubit<ProductState> {
     emit(ProductLoadingState());
     try {
       products = await AllProductsService.getAllProducts();
-      print(products);
       emit(ProductSuccessState());
-    } on Exception catch (error) {
-      print(error);
+    } on Exception catch (_) {
       emit(ProductFailureState());
     }
   }
@@ -32,7 +27,14 @@ class ProductCubit extends Cubit<ProductState> {
     isLoading = true;
 
     try {
-      await UpdateProductService.updateProduct(id: product.id, title: productName == null ? product.title : productName!, price: price == null ? product.price.toString() : price!, desc: desc == null ? product.description : desc!, image: image == null ? product.image : image!, category: product.category);
+      await UpdateProductService.updateProduct(
+        id: product.id, 
+        title: productName == null ? product.title : productName!, 
+        price: price == null ? product.price.toString() : price!, 
+        desc: desc == null ? product.description : desc!, 
+        image: image == null ? product.image : image!, 
+        category: product.category,
+        );
 
       emit(UpdateProductSuccessState());
       isLoading = false;

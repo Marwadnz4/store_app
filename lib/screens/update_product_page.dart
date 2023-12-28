@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:store/cubit/product_cubit.dart';
 import 'package:store/models/product_model.dart';
-import 'package:store/services/update_product.dart';
 import 'package:store/widgets/custom_button.dart';
 import 'package:store/widgets/custom_text_field.dart';
 import 'package:store/cubit/product_state.dart';
@@ -79,7 +78,7 @@ class UpdateProductPage extends StatelessWidget {
                     const SizedBox(
                       height: 70,
                     ),
-                    CustomButon(
+                    CustomButton(
                       text: 'Update',
                       onTap: () async {
                         cubit.updateProduct(product);
